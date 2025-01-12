@@ -6,7 +6,7 @@
 /*   By: erian <erian@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 14:06:45 by erian             #+#    #+#             */
-/*   Updated: 2025/01/12 14:54:34 by erian            ###   ########.fr       */
+/*   Updated: 2025/01/12 17:30:27 by erian            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,14 +42,26 @@ void LoadData(const std::string& filename, std::vector<Passenger>& data) {
 
 int main(int ac, char **av){
 	std::vector<Passenger> titanic_data;
+	Passenger passenger;
 	
-	if (ac != 3){
-		std::cout << "invalid number of arguments\n" << std::endl;
+	(void)av;
+	
+	if (ac != 1){
+		std::cout << "invalid input\n" << std::endl;
 		return 0;
 	}
-	(void)ac;
-	(void)av;
+	
+	passenger.pclass = 1;
+	passenger.name = "Erik An";
+	passenger.sex = "Male";
+	passenger.age = 19;
+	passenger.sibsp = 3;
+	passenger.parch = 2;
+	passenger.fare = 1000;
+	
+
 	LoadData("titanic.csv", titanic_data);
+	
 	std::cout << "Loaded " << titanic_data.size() << " rows of data." << std::endl;
 	return 0;
 }

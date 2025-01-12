@@ -6,7 +6,7 @@
 /*   By: erian <erian@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 14:10:06 by erian             #+#    #+#             */
-/*   Updated: 2025/01/12 14:57:14 by erian            ###   ########.fr       */
+/*   Updated: 2025/01/12 17:18:01 by erian            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,6 @@ struct Passenger {
 	int parch;			// Number of parents/children aboard
 	double fare;
 };
+
 
 #endif
