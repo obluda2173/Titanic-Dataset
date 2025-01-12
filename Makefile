@@ -2,7 +2,7 @@ NAME		=	titanic
 
 # compiler and flags
 CXX			=	@c++
-CXXFLAGS	=	-std=c++17 -Wall -Wextra -Werror -g
+CXXFLAGS	=	-std=c++11 -Wall -Wextra -Werror -g -I/usr/include/python3.x
 
 # sources and objects
 SRC			=	$(wildcard *.cpp)
