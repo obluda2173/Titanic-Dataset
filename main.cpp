@@ -1,22 +1,5 @@
 #include "data.hpp"
 
-Passenger::Passenger(std::string& line) {
-	std::stringstream ss(line);
-	Passenger p;
-	std::string token;
-
-	std::getline(ss, token, ','); p.survived = std::stoi(token);
-	std::getline(ss, token, ','); p.pclass = std::stoi(token);
-	std::getline(ss, p.name, ',');
-	std::getline(ss, token, ','); p.sex = (token == "male") ? 1 : 0;
-	std::getline(ss, token, ','); p.age = std::stoi(token);
-	std::getline(ss, token, ','); p.sibsp = std::stoi(token);
-	std::getline(ss, token, ','); p.parch = std::stoi(token);
-	std::getline(ss, token, ','); p.fare = std::stod(token);
-	
-	return p;
-}
-
 void LoadData(const std::string& filename, std::vector<Passenger>& data) {
 	std::ifstream file(filename);
 	std::string line;

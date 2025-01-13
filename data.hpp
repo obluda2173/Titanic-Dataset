@@ -22,7 +22,15 @@ private:
 	double m_fare;
 public:
 	Passenger(std::string& line);
+
 	int getSurvived();
+	int getPassengerClass();
+	std::string getName();
+	int getSex();
+	int getAge();
+	int getNumSibPart();
+	int getNumParentChild();
+	double getFare();
 };
 
 
