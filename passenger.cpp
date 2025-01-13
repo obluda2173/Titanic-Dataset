@@ -37,6 +37,9 @@ Passenger::getNumSibPart() {
 Passenger::getNumParentChild() {
 	return m_parch;
 }
+Passenger::getFamilySize() {
+	return ;
+}
 Passenger::getFare() {
 	return m_fare;
 }

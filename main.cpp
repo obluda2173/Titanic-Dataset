@@ -84,7 +84,7 @@ int main(int ac, char **av){
 		std::cout << passenger.name << std::endl;
 	}
 
-	ExportDataToCSV(titanic_data, "preprocessed_titanic_data.csv");
+	// ExportDataToCSV(titanic_data, "preprocessed_titanic_data.csv");
 
 	return 0;
 }

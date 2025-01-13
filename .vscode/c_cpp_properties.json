@@ -4,7 +4,7 @@
             "name": "Linux",
             "includePath": [
                 "${workspaceFolder}/**",
-                "/home/erian/.local/lib/python3.10/site-packages/pybind11/include/pybind11"
+                "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pybind11/include/pybind11"
             ],
             "defines": [],
             "compilerPath": "/usr/bin/gcc",
