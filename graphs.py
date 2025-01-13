@@ -2,7 +2,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 # Load data
-data = pd.read_csv('processed_titanic_data.csv')
+data = pd.read_csv('titanic.csv')
 
 # Example Analysis
 print(data.describe())
