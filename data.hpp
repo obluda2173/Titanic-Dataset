@@ -1,16 +1,4 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   data.hpp                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: erian <erian@student.42.fr>                +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/12 14:10:06 by erian             #+#    #+#             */
-/*   Updated: 2025/01/12 20:08:48 by erian            ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-#ifndef DATA_HPP
+ifndef DATA_HPP
 #define DATA_HPP
 
 #include <fstream>
@@ -22,15 +10,19 @@
 #include <embed.h>
 namespace py = pybind11;
 
-struct Passenger {
-	int survived;
-	int pclass;
-	std::string name;
-	int sex;			// 1 for male, 0 for female
-	int age;
-	int sibsp;			// Number of siblings/spouses aboard
-	int parch;			// Number of parents/children aboard
-	double fare;
+class Passenger {
+private:
+	int m_survived;
+	int m_pclass;
+	std::string m_name;
+	int m_sex;			// 1 for male, 0 for female
+	int m_age;
+	int m_sibsp;			// Number of siblings/spouses aboard
+	int m_parch;			// Number of parents/children aboard
+	double m_fare;
+public:
+	Passenger(std::string& line);
+	int getSurvived();
 };
 
 

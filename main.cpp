@@ -1,6 +1,6 @@
 #include "data.hpp"
 
-Passenger ParseRow(std::string& line) {
+Passenger::Passenger(std::string& line) {
 	std::stringstream ss(line);
 	Passenger p;
 	std::string token;
