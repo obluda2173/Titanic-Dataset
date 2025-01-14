@@ -13,6 +13,17 @@ Passenger::Passenger(std::string& line) {
 	std::getline(ss, token, ','); m_parch = std::stoi(token);
 	std::getline(ss, token, ','); m_fare = std::stod(token);
 }
+Passenger::Passenger(bool survived, int pclass, std::string name, 
+		int sex, int age, int sibsp, int parch, double fare) {
+	m_survived = survived;
+	m_pclass = pclass;
+	m_name = name;
+	m_sex = sex;
+	m_age = age;
+	m_sibsp = sibsp;
+	m_parch = parch;
+	m_fare = fare;
+}
 int Passenger::getSurvived() const {
 	return m_survived;
 }
@@ -34,6 +45,16 @@ int Passenger::getNumSibPart() const {
 int Passenger::getNumParentChild() const {
 	return m_parch;
 }
+int Passenger::getFamilySize() const {
+	return m_sibsp + m_parch;
+}
 double Passenger::getFare() const {
 	return m_fare;
+}
+
+void Passenger::removeHonorific() {
+	size_t dotPos = m_name.find('.');
+	if (dotPos != std::string::npos) {
+		m_name = m_name.substr(dotPos + 2);
+	}
 }

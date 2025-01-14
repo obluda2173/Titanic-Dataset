@@ -18,16 +18,27 @@ private:
 	int m_parch;			// Number of parents/children aboard
 	double m_fare;
 public:
+	//Constructors
 	Passenger(std::string& line);
+	Passenger(bool survived, int pclass, std::string name, int sex, 
+			int age, int sibsp, int parch, double fare);
 
-	int getSurvived() const;
-	int getPassengerClass() const;
-	std::string getName() const;
-	int getSex() const;
-	int getAge() const;
-	int getNumSibPart() const;
-	int getNumParentChild() const;
-	double getFare() const;
+	//Getters
+	int getSurvived() const ;
+	int getPassengerClass() const ;
+	std::string getName() const ;
+	int getSex() const ;
+	int getAge() const ;
+	int getNumSibPart() const ;
+	int getNumParentChild() const ;
+	double getFare() const ;
+
+	//Derived Getter
+	//Returns m_sibsp + m_parch
+	int getFamilySize() const ;
+
+	//Removes Title or Honorific ie. Mr, Mrs, Master from m_name
+	void removeHonorific();
 };
 
 void LoadData(const std::string& filename, std::vector<Passenger>& data);
