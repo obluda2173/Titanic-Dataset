@@ -7,9 +7,6 @@
 #include <string>
 #include <iostream>
 
-#include <embed.h>
-namespace py = pybind11;
-
 class Passenger {
 private:
 	int m_survived;
@@ -23,15 +20,19 @@ private:
 public:
 	Passenger(std::string& line);
 
-	int getSurvived();
-	int getPassengerClass();
-	std::string getName();
-	int getSex();
-	int getAge();
-	int getNumSibPart();
-	int getNumParentChild();
-	double getFare();
+	int getSurvived() const;
+	int getPassengerClass() const;
+	std::string getName() const;
+	int getSex() const;
+	int getAge() const;
+	int getNumSibPart() const;
+	int getNumParentChild() const;
+	double getFare() const;
 };
+
+void LoadData(const std::string& filename, std::vector<Passenger>& data);
+void PreprocessData(std::vector<Passenger>& data);
+void ExportDataToCSV(const std::vector<Passenger>& data, const std::string& filename);
 
 
 #endif

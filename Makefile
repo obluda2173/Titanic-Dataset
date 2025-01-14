@@ -1,39 +1,53 @@
-NAME		=	titanic
+NAME        = titanic
 
-# compiler and flags
-CXX			=	@c++
-CXXFLAGS	=	-std=c++11 -Wall -Wextra -Werror -g -I/usr/include/python3.x
+CXX         = @c++
+CXXFLAGS    = -std=c++17 -Wall -Wextra -Werror -g
 
-# sources and objects
-SRC			=	$(wildcard *.cpp)
-OBJ			=	$(SRC:.cpp=.o)
+SRCDIR      = src
+OBJDIR      = obj
+INC         = -Iinc
 
-# colors for output
-RED			:=	\033[1;31m
-GREEN		:=	\033[1;32m
-BLUE		:=	\033[1;34m
-RESET		:=	\033[0m
+SRC         = $(wildcard $(SRCDIR)/*.cpp)
+OBJ         = $(SRC:$(SRCDIR)/%.cpp=$(OBJDIR)/%.o)
 
-# default target
+# Colors for output
+RED         := \033[1;31m
+GREEN       := \033[1;32m
+BLUE        := \033[1;34m
+RESET       := \033[0m
+
+# Default target
 all: $(NAME)
 
-# link objects to create executable
+# Link objects to create the executable
 $(NAME): $(OBJ)
-	@$(CXX) $(CXXFLAGS) $^ -o $@
-	@echo "$(GREEN)built successfully$(RESET)"
+	@$(CXX) $(CXXFLAGS) $(INC) $^ -o $@
+	@echo "$(GREEN)Built successfully$(RESET)"
 
-# clean object files
+# Compile source files into object files
+$(OBJDIR)/%.o: $(SRCDIR)/%.cpp | $(OBJDIR)
+	@$(CXX) $(CXXFLAGS) $(INC) -c $< -o $@
+
+# Ensure the object directory exists
+$(OBJDIR):
+	@mkdir -p $(OBJDIR)
+
+# Clean object files
 clean:
-	@echo "$(BLUE)cleaning objects$(RESET)"
-	@rm -f $(OBJ)
+	@echo "$(BLUE)Cleaning objects$(RESET)"
+	@rm -fr $(OBJDIR)
 
-# clean executable and object files
+# Clean object files and the executable
 fclean: clean
-	@echo "$(BLUE)cleaning executable$(RESET)"
+	@echo "$(BLUE)Cleaning executable$(RESET)"
+	@rm -f processed_data.csv && rm -f *.png
 	@rm -f $(NAME)
 
-# rebuild
+# Rebuild the project
 re: fclean all
 
-# declare targets as not files
-.PHONY: all clean fclean re
+# Python rule (optional)
+py:
+	@python3 $(SRCDIR)/graphs.py
+
+.PHONY: all clean fclean re py
