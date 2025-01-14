@@ -35,7 +35,7 @@ void PreprocessData(std::vector<Passenger>& data) {
 
 void ExportDataToCSV(const std::vector<Passenger>& data, const std::string& filename) {
 	std::ofstream file(filename);
-	file << "Survived,Pclass,Name,Sex,Age,SibSpouse,ParChild,FarePrice\n";
+	file << "Survived,Pclass,Name,Sex,Age,SibSpouse,ParChild,FarePrice,FamilySize\n";
 	for (const auto& p : data) {
 		file << p.getSurvived() << ","
 			<< p.getPassengerClass() << ","
@@ -44,6 +44,7 @@ void ExportDataToCSV(const std::vector<Passenger>& data, const std::string& file
 			<< p.getAge() << ","
 			<< p.getNumSibPart() << ","
 			<< p.getNumParentChild() << ","
-			<< p.getFare() << "\n";
+			<< p.getFare() << ","
+			<< p.getFamilySize() << "\n";
 	}
 }
