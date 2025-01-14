@@ -44,6 +44,8 @@ public:
 void LoadData(const std::string& filename, std::vector<Passenger>& data);
 void PreprocessData(std::vector<Passenger>& data);
 void ExportDataToCSV(const std::vector<Passenger>& data, const std::string& filename);
+std::vector<double> RetValX(std::vector<Passenger>& passengers);
+std::vector<double> RetValY(std::vector<Passenger>& passengers);
 
 
 #endif

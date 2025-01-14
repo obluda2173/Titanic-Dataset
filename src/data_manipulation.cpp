@@ -47,3 +47,18 @@ void ExportDataToCSV(const std::vector<Passenger>& data, const std::string& file
 			<< p.getFare() << "\n";
 	}
 }
+
+std::vector<double> RetValX(std::vector<Passenger>& passengers){
+	std::vector<double> ret_arr;
+	for (Passenger passenger : passengers){
+		ret_arr.push_back((double)passenger.getAge());
+	}
+	return ret_arr;
+}
+std::vector<double> RetValY(std::vector<Passenger>& passengers){
+	std::vector<double> ret_arr;
+	for (Passenger passenger : passengers){
+		ret_arr.push_back((double)passenger.getSurvived());
+	}
+	return ret_arr;
+}
