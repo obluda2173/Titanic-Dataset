@@ -51,7 +51,6 @@ int Passenger::getFamilySize() const {
 double Passenger::getFare() const {
 	return m_fare;
 }
-
 void Passenger::removeHonorific() {
 	size_t dotPos = m_name.find('.');
 	if (dotPos != std::string::npos) {

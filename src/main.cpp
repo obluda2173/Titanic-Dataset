@@ -7,7 +7,7 @@ int main() {
 	LoadData("titanic.csv", titanic_data);
 	std::cout << "Loaded " << titanic_data.size() << " rows of data." << std::endl;
 
-	PreprocessData(titanic_data);
+	// PreprocessData(titanic_data);
 	ExportDataToCSV(titanic_data, "processed_data.csv");
 
 	// Execute the Python script

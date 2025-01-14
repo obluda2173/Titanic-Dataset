@@ -23,6 +23,7 @@ void LoadData(const std::string& filename, std::vector<Passenger>& data) {
 	}
 }
 
+//useless for now
 void PreprocessData(std::vector<Passenger>& data) {
 	for (auto& passenger : data) {
 		size_t dot_pos = passenger.getName().find('.');

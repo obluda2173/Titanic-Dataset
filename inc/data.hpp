@@ -24,18 +24,18 @@ public:
 			int age, int sibsp, int parch, double fare);
 
 	//Getters
-	int getSurvived() const ;
-	int getPassengerClass() const ;
-	std::string getName() const ;
-	int getSex() const ;
-	int getAge() const ;
-	int getNumSibPart() const ;
-	int getNumParentChild() const ;
-	double getFare() const ;
+	int getSurvived() const;
+	int getPassengerClass() const;
+	std::string getName() const;
+	int getSex() const;
+	int getAge() const;
+	int getNumSibPart() const;
+	int getNumParentChild() const;
+	double getFare() const;
 
 	//Derived Getter
 	//Returns m_sibsp + m_parch
-	int getFamilySize() const ;
+	int getFamilySize() const;
 
 	//Removes Title or Honorific ie. Mr, Mrs, Master from m_name
 	void removeHonorific();
