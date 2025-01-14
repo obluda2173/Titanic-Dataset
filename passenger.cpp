@@ -2,44 +2,59 @@
 
 Passenger::Passenger(std::string& line) {
 	std::stringstream ss(line);
-	Passenger p;
 	std::string token;
 
-	std::getline(ss, token, ','); p.survived = std::stoi(token);
-	std::getline(ss, token, ','); p.pclass = std::stoi(token);
-	std::getline(ss, p.name, ',');
-	std::getline(ss, token, ','); p.sex = (token == "male") ? 1 : 0;
-	std::getline(ss, token, ','); p.age = std::stoi(token);
-	std::getline(ss, token, ','); p.sibsp = std::stoi(token);
-	std::getline(ss, token, ','); p.parch = std::stoi(token);
-	std::getline(ss, token, ','); p.fare = std::stod(token);
-	
-	return p;
+	std::getline(ss, token, ','); m_survived = std::stoi(token);
+	std::getline(ss, token, ','); m_pclass = std::stoi(token);
+	std::getline(ss, m_name, ',');
+	std::getline(ss, token, ','); m_sex = (token == "male") ? 1 : 0;
+	std::getline(ss, token, ','); m_age = std::stoi(token);
+	std::getline(ss, token, ','); m_sibsp = std::stoi(token);
+	std::getline(ss, token, ','); m_parch = std::stoi(token);
+	std::getline(ss, token, ','); m_fare = std::stod(token);
 }
-Passenger::getSurvived() {
+Passenger::Passenger(bool survived, int pclass, std::string name, 
+		int sex, int age, int sibsp, int parch, double fare) {
+	m_survived = survived;
+	m_pclass = pclass;
+	m_name = name;
+	m_sex = sex;
+	m_age = age;
+	m_sibsp = sibsp;
+	m_parch = parch;
+	m_fare = fare;
+}
+bool Passenger::getSurvived() {
 	return m_survived;
 }
-Passenger::getPassengerClass() {
+int Passenger::getPassengerClass() {
 	return m_pclass;
 }
-Passenger::getName() {
+std::string Passenger::getName() {
 	return m_name;
 }
-Passenger::getSex() {
+int Passenger::getSex() {
 	return m_sex;
 }
-Passenger::getAge() {
+int Passenger::getAge() {
 	return m_age;
 }
-Passenger::getNumSibPart() {
+int Passenger::getNumSibPart() {
 	return m_sibsp;
 }
-Passenger::getNumParentChild() {
+int Passenger::getNumParentChild() {
 	return m_parch;
 }
-Passenger::getFamilySize() {
-	return ;
+int Passenger::getFamilySize() {
+	return m_sibsp + m_parch;
 }
-Passenger::getFare() {
+double Passenger::getFare() {
 	return m_fare;
+}
+
+void Passenger::removeHonorific() {
+	size_t dotPos = m_name.find('.');
+	if (dotPos != std::string::npos) {
+		m_name = m_name.substr(dotPos + 2);
+	}
 }
