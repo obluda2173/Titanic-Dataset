@@ -12,16 +12,16 @@ int main() {
 	auto y = RetValY(titanic_data);
 	LinearRegressor regressor;
 	regressor.Fit(x, y);
-	std::cout << regressor.Transform(19.0) << std::endl;
+	std::cout << regressor.Transform(3.0) << std::endl;
 	// PreprocessData(titanic_data);
-	// ExportDataToCSV(titanic_data, "processed_data.csv");
+	ExportDataToCSV(titanic_data, "processed_data.csv");
 
-	// Execute the Python script
-	// int result = std::system("python3 src/graphs.py");
-	// if (result != 0) {
-	// 	std::cerr << "Error: Could not execute Python script." << std::endl;
-	// 	return result;
-	// }
+	// // Execute the Python script
+	int result = std::system("python3 src/graphs.py");
+	if (result != 0) {
+		std::cerr << "Error: Could not execute Python script." << std::endl;
+		return result;
+	}
 
 	return 0;
 }
