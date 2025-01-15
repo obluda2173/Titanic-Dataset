@@ -56,6 +56,7 @@ std::vector<double> RetValX(std::vector<Passenger>& passengers){
 	}
 	return ret_arr;
 }
+
 std::vector<double> RetValY(std::vector<Passenger>& passengers){
 	std::vector<double> ret_arr;
 	for (Passenger passenger : passengers){

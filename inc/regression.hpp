@@ -18,5 +18,4 @@ public:
 	double Transform(double value) const;
 };
 
-
 #endif

@@ -13,6 +13,7 @@ Passenger::Passenger(std::string& line) {
 	std::getline(ss, token, ','); m_parch = std::stoi(token);
 	std::getline(ss, token, ','); m_fare = std::stod(token);
 }
+
 Passenger::Passenger(bool survived, int pclass, std::string name, 
 		int sex, int age, int sibsp, int parch, double fare) {
 	m_survived = survived;
@@ -24,6 +25,7 @@ Passenger::Passenger(bool survived, int pclass, std::string name,
 	m_parch = parch;
 	m_fare = fare;
 }
+
 int Passenger::getSurvived() const {
 	return m_survived;
 }

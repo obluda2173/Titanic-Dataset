@@ -12,7 +12,7 @@ private:
 	int m_survived;
 	int m_pclass;
 	std::string m_name;
-	int m_sex;			// 1 for male, 0 for female
+	int m_sex;				// 1 for male, 0 for female
 	int m_age;
 	int m_sibsp;			// Number of siblings/spouses aboard
 	int m_parch;			// Number of parents/children aboard

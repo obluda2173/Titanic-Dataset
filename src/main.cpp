@@ -13,6 +13,7 @@ int main() {
 	LinearRegressor regressor;
 	regressor.Fit(x, y);
 	std::cout << regressor.Transform(3.0) << std::endl;
+	
 	// PreprocessData(titanic_data);
 	ExportDataToCSV(titanic_data, "processed_data.csv");
 
