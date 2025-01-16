@@ -10,16 +10,16 @@ This project analyzes survival rates from the Titanic disaster using preprocesse
 
 ### Visualizations
 1. Survival Rate by Passenger Class:
-- Bar chart showing survival rates for each passenger class (1st, 2nd, and 3rd).
+ - Bar chart showing survival rates for each passenger class (1st, 2nd, and 3rd).
 
 2. Survival Rate by Gender:
-- Bar chart comparing survival rates for males and females.
+ - Bar chart comparing survival rates for males and females.
 
 3. Survival Rate by Family Size:
-- Bar chart analyzing survival rates based on categorized family size groups (e.g., no family, small family, etc.).
+ - Bar chart analyzing survival rates based on categorized family size groups (e.g., no family, small family, etc.).
 
 4. Survival Rate by Age Group:
-- Bar chart showing survival rates for age groups (e.g., children, teens, adults, seniors).
+ - Bar chart showing survival rates for age groups (e.g., children, teens, adults, seniors).
 
-### Survavial rate Analysis:
+### Survavial Rate Analysis:
 <img src="https://github.com/obluda2173/Titanic-Dataset/blob/main/docs/survival_rate_analysis.png" width="100%" height="100%">
