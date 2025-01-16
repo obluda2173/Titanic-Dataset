@@ -22,4 +22,4 @@ This project analyzes survival rates from the Titanic disaster using preprocesse
 - Bar chart showing survival rates for age groups (e.g., children, teens, adults, seniors).
 
 ### Survavial rate Analysis:
-<img src="" width="100%" height="100%">
+<img src="https://github.com/obluda2173/Titanic-Dataset/blob/main/docs/survival_rate_analysis.png" width="100%" height="100%">
