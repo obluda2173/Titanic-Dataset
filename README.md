@@ -4,9 +4,9 @@
 This project analyzes survival rates from the Titanic disaster using preprocessed passenger data. The analysis includes visualizations of survival rates segmented by various passenger attributes, such as class, gender, family size, and age group.
 
 ### Features
-- *Data Preprocessing:* The dataset is preprocessed to include meaningful groupings like age groups and family size categories.
-- *Interactive Visualizations:* Survival rates are visualized using Matplotlib and Seaborn, with clear labeling and percentage-based bar annotations.
-- *Insights Extraction:* The project highlights key survival trends based on passenger demographics and attributes.
+- **Data Preprocessing:** The dataset is preprocessed to include meaningful groupings like age groups and family size categories.
+- **Interactive Visualizations:** Survival rates are visualized using Matplotlib and Seaborn, with clear labeling and percentage-based bar annotations.
+- **Insights Extraction:** The project highlights key survival trends based on passenger demographics and attributes.
 
 ### Visualizations
 1. Survival Rate by Passenger Class:
