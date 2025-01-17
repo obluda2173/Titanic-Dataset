@@ -49,14 +49,26 @@ void ExportDataToCSV(const std::vector<Passenger>& data, const std::string& file
 	}
 }
 
-std::vector<double> RetValX(std::vector<Passenger>& passengers){
-	std::vector<double> ret_arr;
-	for (Passenger passenger : passengers){
-		ret_arr.push_back((double)passenger.getAge());
+std::vector<std::vector<double>> RetValsX(std::vector<Passenger>& passengers){
+	unsigned int size = passengers.size();
+	std::vector<std::vector<double>> ret_arr(size);
+	for (unsigned int i = 0; i < size; i++){
+		ret_arr[i].push_back((double)passengers[i].getPassengerClass());
+		ret_arr[i].push_back((double)passengers[i].getSex());
+		ret_arr[i].push_back((double)passengers[i].getAge());
+		ret_arr[i].push_back((double)passengers[i].getFamilySize());
+		ret_arr[i].push_back((double)passengers[i].getFare());
 	}
 	return ret_arr;
 }
 
+std::vector<double> RetValX(std::vector<Passenger>& passengers){
+	std::vector<double> ret_arr;
+	for (Passenger passenger : passengers){
+		ret_arr.push_back((double)passenger.getFare());
+	}
+	return ret_arr;
+}
 std::vector<double> RetValY(std::vector<Passenger>& passengers){
 	std::vector<double> ret_arr;
 	for (Passenger passenger : passengers){

@@ -46,6 +46,7 @@ void PreprocessData(std::vector<Passenger>& data);
 void ExportDataToCSV(const std::vector<Passenger>& data, const std::string& filename);
 std::vector<double> RetValX(std::vector<Passenger>& passengers);
 std::vector<double> RetValY(std::vector<Passenger>& passengers);
+std::vector<std::vector<double>> RetValsX(std::vector<Passenger>& passengers);
 
 
 #endif
