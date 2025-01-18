@@ -72,7 +72,7 @@ std::vector<double> RetValX(std::vector<Passenger>& passengers){
 std::vector<double> RetValY(std::vector<Passenger>& passengers){
 	std::vector<double> ret_arr;
 	for (Passenger passenger : passengers){
-		ret_arr.push_back((double)passenger.getSurvived());
+		ret_arr.push_back(passenger.getSurvived());
 	}
 	return ret_arr;
 }

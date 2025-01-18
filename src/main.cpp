@@ -3,8 +3,6 @@
 
 int main() {
 	std::vector<Passenger> titanic_data;
-
-	Passenger hisRoyalHighness(true, 2, "Mr.", 1, 19, 1, 2, 31.15);
 	// Load, preprocess, and export data
 	LoadData("titanic.csv", titanic_data);
 	std::cout << "Loaded " << titanic_data.size() << " rows of data." << std::endl;
@@ -12,10 +10,12 @@ int main() {
 	auto x = RetValsX(titanic_data);
 	auto y = RetValY(titanic_data);
 	LinearRegressor regressor;
-	regressor.Train(x, y, .01, 100);
-	std::cout << regressor.Transform(hisRoyalHighness) << std::endl;
+	regressor.Train(x, y, .00025, 10000);
+	// Passenger hsRoyalHighness(true, 1, "Mr.erik an ", 1, 19, 3, 2, 31.15);
+	// std::cout << hsRoyalHighness.getName() <<regressor.Transform(hsRoyalHighness) << std::endl;
+
 	
-	// PreprocessData(titanic_data);
+	PreprocessData(titanic_data);
 	// ExportDataToCSV(titanic_data, "processed_data.csv");
 
 	// // Execute the Python script

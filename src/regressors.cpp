@@ -38,43 +38,53 @@ double LinearRegressor::Transform(Passenger passenger) const {
 	retArr.push_back((double)passenger.getFare());
 	return Transform(retArr);
 }
-void printVector(std::vector<long double> printv) {
+void printVector(std::vector<double> printv) {
 	for (const auto& i: printv)
     	std::cout << i << ' ';
 }
-bool LinearRegressor::Train(std::vector<std::vector<double>> x, std::vector<double> y, double learningRate, int iterations) {
-	while (m_weights.size() < x[0].size()) {
-		m_weights.push_back(.9);
-	}
-	for (int iteration = 0; iteration < iterations; iteration++) {
+void LinearRegressor::Train(const std::vector<std::vector<double>>& x, const std::vector<double>& y, double learningRate, int iterations) {
+	int nSamples = x.size();
+	int nFeatures = x[0].size();
 
-		std::cout << std::endl;
-		std::vector<long double> sumDerivativeWeights(x[0].size());
-		long double sumDerivativeBias = 0;
-		std::vector<double> yHatVals;
-		for (unsigned int i = 0; i < x.size(); i++) {
-			yHatVals.push_back(Transform(x[i]));
-			double error = y[i] - yHatVals[i];
-			for (unsigned j = 0; j < x[i].size(); j++) {
-				sumDerivativeWeights[j] += 2 * x[i][j] * error;
+	m_weights.resize(nFeatures, 0.0);
+	m_bias = 0.0;
+
+	for (int iter = 0; iter < iterations; iter++) {
+
+		std::vector<double> yHat(nSamples, 0.0);
+
+		for (int i = 0; i < nSamples; ++i) {
+			yHat[i] = Transform(x[i]);
+		}
+
+
+		std::vector<double> derivativeWeights(nFeatures, 0.0);
+		double derivativeBias = 0.0;
+
+		for (int i = 0; i < nSamples; ++i) {
+
+			double error = yHat[i] - y[i];
+
+			for (int j = 0; j < nFeatures; ++j) {
+				derivativeWeights[j] += 2 * error * x[i][j];
 			}
-			sumDerivativeBias += 2 * error;
+			derivativeBias += 2 * error;
 		}
 
-
-		for (unsigned i = 0; i < m_weights.size(); i++) {
-			m_weights[i] -= (sumDerivativeWeights[i] /= x[i].size()) * learningRate;
+		for (int j = 0; j < nFeatures; ++j) {
+			m_weights[j] -= learningRate * derivativeWeights[j] / nSamples;
 		}
-		printVector(sumDerivativeWeights);
-		m_bias -= (sumDerivativeBias / y.size()) * learningRate;
-		// std::cout << MeanSquaredError(y, yHatVals) << std::endl;
+		m_bias -= learningRate * derivativeBias / nSamples;
+	
+		// if (iter % 500 == 0){
+		// 	std::cout << "Iteration " << iter << "\n\tMSE: " << MeanSquaredError(y, yHat) << std::endl;
+		// }
 	}
-	return true;
 }
 double MeanSquaredError(std::vector<double> y, std::vector<double> yHat) {
 	long double sum = 0;
 	for (unsigned int i = 0; i < y.size(); i++) {
-		sum += (y[i] - yHat[i]) * (y[i] - yHat[i]);
+		sum += (yHat[i] - y[i]) * (yHat[i] - y[i]);
 	}
 	return (sum / y.size());
 }

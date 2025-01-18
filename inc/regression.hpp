@@ -17,7 +17,7 @@ public:
 	double GetBias() const;
 
 	bool Fit(std::vector<double> x, std::vector<double> y);
-	bool Train(std::vector<std::vector<double>> x, std::vector<double> y, double learningRate, int iterations);
+	void Train(const std::vector<std::vector<double>>& x, const std::vector<double>& y, double learningRate, int iterations);
 	double Transform(double value) const;
 	double Transform(std::vector<double> values) const;
 	double Transform(Passenger passenger) const;
