@@ -4,24 +4,28 @@
 #include "data.hpp"
 #include <iostream>
 #include <vector>
+#include "matrix.hpp"
 
 class LinearRegressor {
 private:
-	std::vector<double> m_weights;
-	double m_weight;
+	Matrix m_weights;
 	double m_bias;
 
+	double m_learningRate;
+
 public:
+	LinearRegressor(double learningRate);
 	//Getters
 	double GetWeight() const;
 	double GetBias() const;
 
-	bool Fit(std::vector<double> x, std::vector<double> y);
-	void Train(const std::vector<std::vector<double>>& x, const std::vector<double>& y, double learningRate, int iterations);
+	// bool Fit(std::vector<double>& x, std::vector<double>& y);
+	void Train(Matrix& x, Matrix& y, int iterations);
 	double Transform(double value) const;
-	double Transform(std::vector<double> values) const;
-	double Transform(Passenger passenger) const;
+	Matrix Transform(Matrix& values) const;
+	Matrix Transform(Passenger& passenger) const;
 };
-double MeanSquaredError(std::vector<double> y, std::vector<double> yHat);
+
+double MeanSquaredError(Matrix& y, Matrix& yHat);
 
 #endif
