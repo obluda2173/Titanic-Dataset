@@ -26,10 +26,10 @@ Matrix::Matrix(const std::vector<double>& vector, int axis) {
 		m_cols = vector.size();
 	}
 	else if (axis == 1) {
-		(*this).resize(1, vector.size());
-		for (int i = 0; i < vector.size(); i++) {
+		(*this).resize(vector.size(), 1, 0.0);
+		for (int i = 0; (unsigned long)i < vector.size(); i++) {
 			m_data[0][i] = vector[i];
-		}	
+		}
 	}
 }
 Matrix::Matrix(double value) : m_rows(1), m_cols(1) {
@@ -72,7 +72,6 @@ Matrix Matrix::T() const {
 	}
 	return retMatrix;
 }
-
 
 void Matrix::print() const {
 	for (std::vector<double>row : m_data) {
@@ -161,6 +160,15 @@ Matrix Matrix::sum() const {
 		}
 	}
 	return sum;
+}
+
+void Matrix::nRandomised(int rows, int cols) {
+	std::srand(static_cast<unsigned>(std::time(0)));
+	double rnd_nbr = -1 + static_cast<double>(rand()) / (static_cast<double>(RAND_MAX / 2));
+	// std::cout << rnd_nbr << "\n";
+	m_data.resize(rows, std::vector<double>(cols, rnd_nbr));
+	m_cols = cols;
+	m_rows = rows;
 }
 
 void Matrix::resize(int rows, int cols, double value) {

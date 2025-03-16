@@ -16,7 +16,7 @@ private:
 public:
 	LinearRegressor(double learningRate);
 	//Getters
-	double GetWeight() const;
+	Matrix GetWeights() const;
 	double GetBias() const;
 
 	// bool Fit(std::vector<double>& x, std::vector<double>& y);

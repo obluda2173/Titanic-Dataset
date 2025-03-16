@@ -23,13 +23,18 @@
 // double LinearRegressor::Transform(double value) const {
 // 	return value * m_weight + m_bias;
 // }
-LinearRegressor::LinearRegressor(double learningRate) {
+LinearRegressor::LinearRegressor(double learningRate) : m_weights(0.0) {
 	m_learningRate = learningRate;
-	m_weights(0.0);
 }
+
+Matrix LinearRegressor::GetWeights() const {
+	return m_weights;
+}
+
 
 Matrix LinearRegressor::Transform(Matrix& values) const {
 	Matrix retMatrix = values.dot(m_weights);
+	// retMatrix.print();
 	return retMatrix + Matrix(m_bias);
 }
 Matrix LinearRegressor::Transform(Passenger& passenger) const {
@@ -42,11 +47,12 @@ Matrix LinearRegressor::Transform(Passenger& passenger) const {
 	Matrix retMatrix(retArr, 0);
 	return Transform(retMatrix);
 }
-void LinearRegressor::Train(Matrix& x, Matrix& y, double learningRate, int iterations) {
+void LinearRegressor::Train(Matrix& x, Matrix& y, int iterations) {
 	int nSamples = x.getRows();
 	int nFeatures = x.getCols();
 
-	m_weights.resize(nSamples, nFeatures, 0.0);
+	m_weights.nRandomised(nFeatures, 1);
+	// m_weights.resize(nFeatures, 1, 0);
 	m_bias = 0.0;
 
 
@@ -58,8 +64,8 @@ void LinearRegressor::Train(Matrix& x, Matrix& y, double learningRate, int itera
 		Matrix derivativeWeights = x.T().dot(error) * Matrix(2.0);
 		double derivativeBias = 2 * error.sum()(0, 0);
 
-		m_weights = m_weights - derivativeWeights * Matrix(learningRate / nSamples);
-		m_bias = m_bias - learningRate * derivativeBias / nSamples;
+		m_weights = m_weights - derivativeWeights * Matrix(m_learningRate / nSamples);
+		m_bias = m_bias - m_learningRate * derivativeBias / nSamples;
 	
 		if (iteration % 500 == 0){
 			std::cout << "Iteration " << iteration << "\n\tMSE: " << MeanSquaredError(y, yHat) << std::endl;

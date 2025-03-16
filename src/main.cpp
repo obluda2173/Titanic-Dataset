@@ -11,9 +11,13 @@ int main() {
 	Matrix x(RetValsX(titanic_data));
 	Matrix y(RetValY(titanic_data), 1);
 
+	y = y * Matrix(100);
+
 	LinearRegressor regressor(.00025);
 
-	regressor.Train(x, y, 100);
+	regressor.Train(x, y, 10000);
+
+	regressor.GetWeights().print();
 
 	Passenger hsRoyalHighness(true, 1, "mr.  s enter ", 1, 19, 3, 2, 31.15);
 	std::cout << hsRoyalHighness.getName() << regressor.Transform(hsRoyalHighness)(0,0) << std::endl;
@@ -31,3 +35,9 @@ int main() {
 
 	return 0;
 }
+
+/*
+ * make Sigmoid function
+ * Loss Function: Binary Cross-Entropy / Log Loss
+ * make partial derivatives of both functions
+ */

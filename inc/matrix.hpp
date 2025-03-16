@@ -3,6 +3,8 @@
 
 #include <iostream>
 #include <vector>
+#include <ctime>
+#include <cstdlib>
 
 class Matrix {
 private:
@@ -33,6 +35,7 @@ public:
 	//add direction to summing later
 	Matrix sum() const;
 
+	void nRandomised(int rows, int cols);
 	void resize(int rows, int cols, double value);
 
 	int getRows() const {return m_rows;}
