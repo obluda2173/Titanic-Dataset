@@ -165,7 +165,6 @@ Matrix Matrix::sum() const {
 void Matrix::nRandomised(int rows, int cols) {
 	std::srand(static_cast<unsigned>(std::time(0)));
 	double rnd_nbr = -1 + static_cast<double>(rand()) / (static_cast<double>(RAND_MAX / 2));
-	// std::cout << rnd_nbr << "\n";
 	m_data.resize(rows, std::vector<double>(cols, rnd_nbr));
 	m_cols = cols;
 	m_rows = rows;

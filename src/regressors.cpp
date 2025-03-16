@@ -52,7 +52,6 @@ void LinearRegressor::Train(Matrix& x, Matrix& y, int iterations) {
 	int nFeatures = x.getCols();
 
 	m_weights.nRandomised(nFeatures, 1);
-	// m_weights.resize(nFeatures, 1, 0);
 	m_bias = 0.0;
 
 

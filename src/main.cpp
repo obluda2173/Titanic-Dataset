@@ -19,8 +19,8 @@ int main() {
 
 	regressor.GetWeights().print();
 
-	Passenger hsRoyalHighness(true, 1, "mr.  s enter ", 1, 19, 3, 2, 31.15);
-	std::cout << hsRoyalHighness.getName() << regressor.Transform(hsRoyalHighness)(0,0) << std::endl;
+	Passenger hisRoyalHighness(true, 1, "mr.  s enter ", 1, 19, 3, 2, 31.15);
+	std::cout << hisRoyalHighness.getName() << regressor.Transform(hisRoyalHighness)(0,0) << std::endl;
 
 	
 	// PreprocessData(titanic_data);
