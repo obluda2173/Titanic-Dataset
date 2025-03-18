@@ -6,5 +6,6 @@
 #include "matrix.hpp"
 
 Matrix sigmoid(Matrix x);
+Matrix sigmoidDerivative(Matrix dInputs, Matrix outputs);
 
 #endif
