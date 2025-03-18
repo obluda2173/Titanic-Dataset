@@ -1,6 +1,7 @@
 #include "data.hpp"
 #include "regression.hpp"
 #include "matrix.hpp"
+#include "activations.hpp"
 
 int main() {
 	std::vector<Passenger> titanic_data;
@@ -13,14 +14,17 @@ int main() {
 
 	y = y * Matrix(100);
 
-	LinearRegressor regressor(.00025);
+	LinearRegressor regressor(.0001);
 
 	regressor.Train(x, y, 10000);
 
 	regressor.GetWeights().print();
 
-	Passenger hisRoyalHighness(true, 1, "mr.  s enter ", 1, 19, 3, 2, 31.15);
-	std::cout << hisRoyalHighness.getName() << regressor.Transform(hisRoyalHighness)(0,0) << std::endl;
+	Passenger hisRoyalHighness(true, 1, "mr. s enter ", 0, 19, 3, 2, 100.5);
+
+	std::cout.precision(2);
+
+	std::cout << hisRoyalHighness.getName() << sigmoid(regressor.Transform(hisRoyalHighness))(0,0) << std::endl;
 
 	
 	// PreprocessData(titanic_data);

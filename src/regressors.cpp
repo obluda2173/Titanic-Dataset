@@ -1,4 +1,6 @@
 #include "regression.hpp"
+#include "activations.hpp"
+
 // bool LinearRegressor::Fit(std::vector<double> x, std::vector<double> y)
 // {
 // 	if (x.size() != y.size()) {
@@ -57,17 +59,19 @@ void LinearRegressor::Train(Matrix& x, Matrix& y, int iterations) {
 
 	for (int iteration = 0; iteration < iterations; iteration++) {
 
-		Matrix yHat = Transform(x);
+		Matrix yHat = sigmoid(Transform(x));
 
-		Matrix error = yHat - y;
-		Matrix derivativeWeights = x.T().dot(error) * Matrix(2.0);
-		double derivativeBias = 2 * error.sum()(0, 0);
+		// Matrix error = yHat - y;
+		Matrix derivativeLoss = binaryCrossEntropyLossDerivative(y, yHat);
+		Matrix derivativeActivation = sigmoidDerivative(derivativeLoss, yHat);
+		Matrix derivativeWeights = x.T().dot(derivativeActivation);
+		double derivativeBias = derivativeActivation.sum()(0, 0);
 
 		m_weights = m_weights - derivativeWeights * Matrix(m_learningRate / nSamples);
 		m_bias = m_bias - m_learningRate * derivativeBias / nSamples;
 	
 		if (iteration % 500 == 0){
-			std::cout << "Iteration " << iteration << "\n\tMSE: " << MeanSquaredError(y, yHat) << std::endl;
+			std::cout << "Iteration " << iteration << "\n\tMSE: " << binaryCrossEntropyLoss(y, yHat) << std::endl;
 		}
 	}
 }
