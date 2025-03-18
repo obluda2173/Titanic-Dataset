@@ -54,7 +54,7 @@ std::vector<std::vector<double>> RetValsX(std::vector<Passenger>& passengers){
 	std::vector<std::vector<double>> ret_arr(size);
 	for (unsigned int i = 0; i < size; i++){
 		ret_arr[i].push_back((double)passengers[i].getPassengerClass());
-		ret_arr[i].push_back((double)passengers[i].getSex());
+		ret_arr[i].push_back((double)passengers[i].getSurvived());
 		ret_arr[i].push_back((double)passengers[i].getAge());
 		ret_arr[i].push_back((double)passengers[i].getFamilySize());
 		ret_arr[i].push_back((double)passengers[i].getFare());

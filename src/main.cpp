@@ -16,11 +16,11 @@ int main() {
 
 	LinearRegressor regressor(.0001);
 
-	regressor.Train(x, y, 10000);
+	regressor.Train(x, y, 10500);
 
 	regressor.GetWeights().print();
 
-	Passenger hisRoyalHighness(true, 1, "mr. s enter ", 0, 19, 3, 2, 100.5);
+	Passenger hisRoyalHighness(true, 1, "mr. s enter ", 1, 19, 3, 2, 300);
 
 	std::cout.precision(2);
 

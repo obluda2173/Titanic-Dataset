@@ -1,6 +1,6 @@
 #include "activations.hpp"
 
-Matrix& sigmoid(const Matrix& x) {
+Matrix sigmoid(const Matrix& x) {
 	int nRows = x.getRows();
 	int nCols = x.getCols();
 	Matrix retMatrix(nRows, nCols);
@@ -13,7 +13,7 @@ Matrix& sigmoid(const Matrix& x) {
 	return retMatrix;
 }
 
-Matrix& sigmoidDerivative(const Matrix& dInputs, const Matrix& prevOutputs) {
+Matrix sigmoidDerivative(const Matrix& dInputs, const Matrix& prevOutputs) {
 	int nRows = dInputs.getRows();
 	int nCols = dInputs.getCols();
 	Matrix retMatrix(nRows, nCols);
@@ -46,7 +46,7 @@ double binaryCrossEntropyLoss(const Matrix& y, const Matrix& yHat) {
 	return retMatrix.sum()(0,0) / y.getRows();
 }
 
-Matrix& binaryCrossEntropyLossDerivative(const Matrix& y, const Matrix& dInputs) {
+Matrix binaryCrossEntropyLossDerivative(const Matrix& y, const Matrix& dInputs) {
 	int nRows = y.getRows();
 	int nCols = y.getCols();
 	Matrix retMatrix(nRows, nCols);
