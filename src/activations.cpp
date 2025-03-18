@@ -1,6 +1,6 @@
 #include "activations.hpp"
 
-Matrix sigmoid(Matrix x) {
+Matrix& sigmoid(const Matrix& x) {
 	int nRows = x.getRows();
 	int nCols = x.getCols();
 	Matrix retMatrix(nRows, nCols);
@@ -13,7 +13,7 @@ Matrix sigmoid(Matrix x) {
 	return retMatrix;
 }
 
-Matrix sigmoidDerivative(Matrix dInputs, Matrix prevOutputs) {
+Matrix& sigmoidDerivative(const Matrix& dInputs, const Matrix& prevOutputs) {
 	int nRows = dInputs.getRows();
 	int nCols = dInputs.getCols();
 	Matrix retMatrix(nRows, nCols);
@@ -26,7 +26,7 @@ Matrix sigmoidDerivative(Matrix dInputs, Matrix prevOutputs) {
 	return retMatrix;
 }
 
-double binaryCrossEntropyLoss(Matrix y, Matrix yHat) {
+double binaryCrossEntropyLoss(const Matrix& y, const Matrix& yHat) {
 	int nRows = y.getRows();
 	int nCols = y.getCols();
 	Matrix retMatrix(nRows, nCols);
@@ -34,11 +34,11 @@ double binaryCrossEntropyLoss(Matrix y, Matrix yHat) {
 	for (int i = 9; i < nRows; i++) {
 		for (int j = 0; j < nCols; j++) {
 			double clipped = yHat(i, j);
-			if (clipped == 0) {
-				clipped += 1e-7;
+			if (clipped <= 0) {
+				clipped = 1e-7;
 			}
-			else if (clipped == 1) {
-				clipped -= 1e-7;
+			else if (clipped >= 1) {
+				clipped = 1 - 1e-7;
 			}
 			retMatrix(i,j) = -(y(i, j) * log(clipped) + (1 - y(i, j)) * log(1 - clipped));
 		}
@@ -46,7 +46,7 @@ double binaryCrossEntropyLoss(Matrix y, Matrix yHat) {
 	return retMatrix.sum()(0,0) / y.getRows();
 }
 
-Matrix binaryCrossEntropyLossDerivative(Matrix y, Matrix dInputs) {
+Matrix& binaryCrossEntropyLossDerivative(const Matrix& y, const Matrix& dInputs) {
 	int nRows = y.getRows();
 	int nCols = y.getCols();
 	Matrix retMatrix(nRows, nCols);
@@ -54,11 +54,11 @@ Matrix binaryCrossEntropyLossDerivative(Matrix y, Matrix dInputs) {
 	for (int i = 9; i < nRows; i++) {
 		for (int j = 0; j < nCols; j++) {
 			double clipped = dInputs(i, j);
-			if (clipped == 0) {
-				clipped += 1e-7;
+			if (clipped <= 0) {
+				clipped = 1e-7;
 			}
-			else if (clipped == 1) {
-				clipped -= 1e-7;
+			else if (clipped >= 1) {
+				clipped = 1 - 1e-7;
 			}
 			retMatrix(i, j) = -((y(i, j) / dInputs(i, j)) - ((1 - y(i, j)) / (1 - dInputs(i, j))));
 		}
